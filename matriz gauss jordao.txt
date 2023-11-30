@@ -1,0 +1,70 @@
+programa
+{
+	real matriz1[3][4]// = {{2.0,3.0,4.0,3.0},{4.0,5.0,6.0,4.5},{2.0,7.0,8.0,3.5}}
+	inteiro linhas=3, colunas=4
+	funcao inicio()
+	{
+		real pivo
+		real fator
+		escreva("Digite os valores para a matriz\n")
+		para(inteiro linha=0;linha<=linhas-1;linha++)
+		{
+			para(inteiro coluna=0;coluna<=colunas-1;coluna++)
+			{
+				escreva("(",linha,",",coluna,") = ")
+				leia(matriz1[linha][coluna])
+				//escreva("       ")
+			}
+			escreva("\n")
+		}
+
+		//mostra_matriz()
+		
+		para(inteiro linha=0;linha<=2;linha++)
+          {
+		//Escolher o pivo
+		pivo=matriz1[linha][linha]
+
+		//Normalizar a linha
+		para(inteiro coluna1=0;coluna1<=3;coluna1++)
+		{
+			matriz1[linha][coluna1]=matriz1[linha][coluna1]/pivo
+		}
+		para(inteiro linha2=linha+1;linha2<=2;linha2++)
+		{
+			fator=matriz1[linha2][linha]
+			para(inteiro coluna2=0;coluna2<=3;coluna2++)
+			{
+				matriz1[linha2][coluna2]=matriz1[linha2][coluna2]-(fator*matriz1[linha][coluna2])
+			}
+		}
+          }
+
+			
+			para(inteiro linha=2;linha>=0;linha--)
+			{
+				
+				para(inteiro linha2=linha-1;linha2>=0;linha2--)
+				{
+					fator=matriz1[linha2][linha]
+					para(inteiro coluna2=3;coluna2>=0;coluna2--)
+					{
+						matriz1[linha2][coluna2]=matriz1[linha2][coluna2]-(fator*matriz1[linha][coluna2])
+					}
+				}
+			}
+          
+          mostra_matriz()
+	}
+	funcao mostra_matriz()
+	{
+		para(inteiro linha3=0;linha3<=2;linha3++)
+		{
+			para(inteiro coluna3=0;coluna3<=3;coluna3++)
+			{
+				escreva(matriz1[linha3][coluna3]," ")
+			}
+			escreva("\n")
+		}
+	}
+}
